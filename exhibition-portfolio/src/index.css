@@ -1,0 +1,339 @@
+/* ─────────────────────────────────────────────────────────
+   DESIGN TOKENS — 전시 공간의 톤앤매너
+   ───────────────────────────────────────────────────────── */
+:root {
+  --bg: #0a0a0b;
+  --bg-soft: #111113;
+  --bg-card: #16161a;
+  --ink: #f4f1ea;
+  --ink-dim: rgba(244, 241, 234, 0.58);
+  --ink-faint: rgba(244, 241, 234, 0.32);
+  --line: rgba(244, 241, 234, 0.14);
+  --line-strong: rgba(244, 241, 234, 0.28);
+  --accent: #d8c9a3;
+
+  --font-display: "Cormorant Garamond", "Noto Serif KR", serif;
+  --font-mono: "Space Mono", "Noto Sans Mono", monospace;
+
+  --room-pad-x: clamp(24px, 6vw, 96px);
+  --ease-gallery: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: auto;
+  scroll-snap-type: y proximity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-snap-type: none;
+  }
+  .room-inner {
+    transition: none;
+  }
+  .entrance-scrollcue-line {
+    animation: none;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor * {
+  cursor: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #14140f;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* 스크롤바 — 전시 동선을 암시하는 얇은 라인 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+}
+
+/* ─────────────────────────────────────────────────────────
+   EXHIBITION SHELL
+   ───────────────────────────────────────────────────────── */
+.exhibition {
+  position: relative;
+  isolation: isolate;
+}
+
+.exhibition-main {
+  position: relative;
+}
+
+/* 각 섹션 = 하나의 "전시실" */
+.room {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  padding: clamp(96px, 14vh, 160px) var(--room-pad-x);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
+  scroll-margin-top: 0;
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.room-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-gallery), transform 0.9s var(--ease-gallery);
+}
+
+.room.is-visible .room-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 전시실 번호 + 라벨 (도슨트 텍스트 느낌) */
+.room-label {
+  position: absolute;
+  top: clamp(28px, 4vh, 48px);
+  left: var(--room-pad-x);
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+}
+
+.room-label b {
+  color: var(--ink-dim);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────
+   CUSTOM CURSOR — 손전등처럼 공간을 비추는 커서
+   ───────────────────────────────────────────────────────── */
+.gallery-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-dim);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s var(--ease-gallery), height 0.35s var(--ease-gallery),
+    border-color 0.35s ease, background 0.35s ease, opacity 0.4s ease;
+  mix-blend-mode: difference;
+}
+
+.gallery-cursor::after {
+  content: attr(data-label);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  text-transform: uppercase;
+}
+
+.gallery-cursor.is-active {
+  width: 84px;
+  height: 84px;
+  background: rgba(244, 241, 234, 0.06);
+}
+
+.gallery-cursor.is-active::after {
+  opacity: 1;
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(244, 241, 234, 0.05) 0%, transparent 70%);
+  transition: opacity 0.4s ease;
+}
+
+/* ─────────────────────────────────────────────────────────
+   PROGRESS RAIL — 관람 동선 인디케이터
+   ───────────────────────────────────────────────────────── */
+.progress-rail {
+  position: fixed;
+  right: clamp(16px, 3vw, 40px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+}
+
+.progress-rail-track {
+  position: relative;
+  width: 1px;
+  height: 160px;
+  background: var(--line);
+}
+
+.progress-rail-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--accent);
+  transition: height 0.15s linear;
+}
+
+.progress-rail-index {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+
+.progress-rail-index b {
+  color: var(--ink);
+}
+
+.progress-rail-dots {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .progress-rail {
+    display: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   NOISE / GRAIN OVERLAY — 갤러리 조명 질감
+   ───────────────────────────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 29;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY UTILITIES
+   ───────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.serif-hero {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.mono-small {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+}
+
+hr.thin {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   SKIP LINK (접근성)
+   ───────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: #14140f;
+  padding: 10px 16px;
+  z-index: 100;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
