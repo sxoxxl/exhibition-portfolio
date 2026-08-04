@@ -44,7 +44,15 @@ export function useScrollTelemetry(roomCount) {
           }
         });
       },
-      { threshold: 0.5 }
+      /**
+       * 화면 정중앙에 걸친 전시실을 현재 위치로 본다.
+       *
+       * 이전에는 threshold: 0.5 (전시실의 50% 이상이 보일 때) 였는데,
+       * 입구처럼 화면보다 훨씬 긴 구간(240vh)은 아무리 스크롤해도
+       * 자기 높이의 50%가 한 화면에 담기지 않아 영영 활성화되지 않았습니다.
+       * 높이와 무관하게 동작하도록 중앙선 방식으로 바꿉니다.
+       */
+      { rootMargin: "-50% 0px -49.9% 0px", threshold: 0 }
     );
 
     rooms.forEach((el) => observer.observe(el));

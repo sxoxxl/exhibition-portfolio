@@ -8,25 +8,63 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+/**
+ * 작가.
+ * 이름 표기는 이 한 곳에서만 관리합니다 — 전시 전체가 여기를 따릅니다.
+ * (입구 포스터의 이름은 이미지 안에 인쇄되어 있어 아래 entrancePoster.artist와
+ *  짝을 이룹니다. 둘은 항상 같은 표기를 유지하세요.)
+ */
 export const profile = {
-  name: "SOL",
-  nameKo: "솔",
+  name: "PARK SOL",
+  nameKo: "박솔",
   role: "Interactive Media Artist",
   roleSub: "Creative Developer",
   roleKo: "인터랙티브 미디어 아티스트 · 크리에이티브 디벨로퍼",
-  exhibitionTitle: "AFTERIMAGES",
-  exhibitionTitleKo: "잔상",
-  period: "2020 — 2026",
-  venueNote: "SOLO EXHIBITION / DIGITAL SPACE",
   location: "Seoul, KR",
-  tagline: "빛과 움직임, 그리고 그 사이에 남는 감각에 대한 기록.",
-  taglineEn: "A record of light, motion, and what remains between them.",
-  statement: [
+  portraitLabel: "PORTRAIT — STUDIO, 2026",
+};
+
+/**
+ * SCENE 01 — 전시 서문.
+ *
+ * AFTERIMAGES(잔상)는 포트폴리오의 제목이 아니라 이 전시의 첫 챕터 제목입니다.
+ * 입구(포스터)는 작가의 이름을 보여주는 자리이고, 이 방에서 전시가 시작됩니다.
+ */
+export const foreword = {
+  scene: "SCENE 01",
+  label: "FOREWORD",
+  title: "AFTERIMAGES",
+  titleKo: "잔상",
+  lead: "빛과 움직임, 그리고 그 사이에 남는 감각에 대한 기록.",
+  leadEn: "A record of light, motion, and what remains between them.",
+  body: [
     "저는 코드를 재료로 빛과 움직임, 소리를 다루는 인터랙티브 미디어 아티스트입니다. 관객의 몸짓과 목소리, 시선이 공간의 일부가 되는 순간을 만드는 데 관심이 있습니다.",
     "센서와 실시간 데이터, 제너러티브 비주얼을 결합해 '보는 전시'가 아니라 '반응하는 공간'을 설계합니다. 완성된 이미지보다, 관객이 개입하는 순간 발생하는 잔상과 여운에 집중합니다.",
     "최근에는 물리적 설치와 웹 기반 인터랙션의 경계를 허무는 작업을 이어가고 있습니다.",
   ],
-  portraitLabel: "SELF PORTRAIT — STUDIO, 2026",
+};
+
+/**
+ * 입구에 걸린 전시 포스터.
+ * 포스터 이미지 안에 이미 인쇄되어 있는 문구들을 그대로 옮겨 적은 것입니다.
+ * (화면에 다시 그리지 않고, 스크린리더 · 검색엔진용 대체 텍스트로만 사용됩니다)
+ *
+ * 포스터 이미지 자체는 두 장입니다 — src/assets/
+ *   entrance-poster.webp           가로 화면용
+ *   entrance-poster-portrait.webp  세로 화면용
+ * 교체할 때는 같은 파일명으로 덮어쓰면 됩니다.
+ */
+export const entrancePoster = {
+  artist: "PARK SOL",
+  artistKo: "박솔",
+  kicker: "MEDIA ART / REALTIME VISUAL",
+  works: "SELECTED WORKS 2023–2026",
+  enterCue: "SCROLL TO ENTER",
+  enterCueKo: "스크롤하여 입장",
+  alt:
+    "전시 포스터: 빛이 들어오는 미술관 복도 사진 위에 크림색 대문자로 PARK SOL이 " +
+    "화면을 가득 채우고 있다. 상단에 MEDIA ART / REALTIME VISUAL, " +
+    "하단에 SELECTED WORKS 2023–2026.",
 };
 
 export const timeline = [

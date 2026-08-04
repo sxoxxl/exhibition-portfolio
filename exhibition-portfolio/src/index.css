@@ -209,6 +209,11 @@ button {
   transition: opacity 0.4s ease;
 }
 
+/* 손전등은 전시장 안에서만 쓴다. 입구의 포스터는 이미 조명을 받고 있다. */
+.has-entered .cursor-glow {
+  opacity: 1;
+}
+
 /* ─────────────────────────────────────────────────────────
    PROGRESS RAIL — 관람 동선 인디케이터
    ───────────────────────────────────────────────────────── */
@@ -223,6 +228,15 @@ button {
   align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
+  /* 관람 UI는 전시장에 들어선 뒤에야 나타난다.
+     입구의 포스터 위에는 웹 UI가 얹히지 않는다. */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s var(--ease-gallery);
+}
+
+.has-entered .progress-rail {
+  opacity: 1;
 }
 
 .progress-rail-track {
@@ -271,8 +285,15 @@ button {
   height: 100%;
   z-index: 30;
   pointer-events: none;
-  opacity: 0.05;
+  /* 입구에는 포스터 자신의 그레인이 이미 있다.
+     전역 그레인은 전시장에 들어선 뒤부터 — 첫 화면의 합성 레이어를 하나 줄인다. */
+  opacity: 0;
   mix-blend-mode: overlay;
+  transition: opacity 1.2s var(--ease-gallery);
+}
+
+.has-entered .grain-overlay {
+  opacity: 0.05;
 }
 
 .vignette-overlay {
@@ -285,6 +306,15 @@ button {
     transparent 55%,
     rgba(0, 0, 0, 0.55) 100%
   );
+  /* 입구의 포스터는 조명을 받은 인쇄물이다. 갤러리의 어둠은
+     전시장 안으로 들어선 뒤부터 짙어진다.
+     (겸사겸사 첫 화면에서 전체화면 레이어를 하나 더 덜어낸다) */
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-gallery);
+}
+
+.has-entered .vignette-overlay {
+  opacity: 1;
 }
 
 /* ─────────────────────────────────────────────────────────
@@ -336,4 +366,18 @@ hr.thin {
 .skip-link:focus {
   left: 16px;
   top: 16px;
+}
+
+/* 화면에는 보이지 않지만 스크린리더 · 검색엔진에는 전달되는 텍스트.
+   (포스터의 글자가 이미지 안에 인쇄되어 있기 때문에 필요합니다) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

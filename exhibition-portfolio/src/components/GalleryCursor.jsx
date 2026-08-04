@@ -24,8 +24,9 @@ export default function GalleryCursor() {
       y = e.clientY;
       if (!revealed) {
         revealed = true;
+        // 커서 점만 여기서 띄운다.
+        // 빛무리(cursor-glow)는 전시장에 들어선 뒤에만 켜지도록 CSS(.has-entered)가 맡는다.
         dotRef.current?.style.setProperty("opacity", "1");
-        glowRef.current?.style.setProperty("opacity", "1");
       }
     };
 
