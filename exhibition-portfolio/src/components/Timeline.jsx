@@ -3,8 +3,10 @@ import { timeline } from "../data/content.js";
 
 const TYPE_LABEL = {
   work: "WORK",
-  edu: "EDU",
-  award: "RESIDENCY",
+  exhibition: "EXHIBITION",
+  teaching: "TEACHING",
+  program: "PROGRAM",
+  edu: "EDUCATION",
 };
 
 export default function Timeline({ index, total }) {
@@ -23,7 +25,8 @@ export default function Timeline({ index, total }) {
               </span>
               <h3 className="timeline-title">{item.titleKo}</h3>
               <span className="timeline-org mono-small">{item.org}</span>
-              <p className="timeline-desc">{item.descKo}</p>
+              {/* 설명이 없는 항목(학력·수료 등)은 빈 줄을 남기지 않는다 */}
+              {item.descKo ? <p className="timeline-desc">{item.descKo}</p> : null}
             </div>
           </li>
         ))}

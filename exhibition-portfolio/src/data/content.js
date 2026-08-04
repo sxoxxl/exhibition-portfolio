@@ -17,11 +17,10 @@
 export const profile = {
   name: "PARK SOL",
   nameKo: "박솔",
-  role: "Interactive Media Artist",
-  roleSub: "Creative Developer",
-  roleKo: "인터랙티브 미디어 아티스트 · 크리에이티브 디벨로퍼",
-  location: "Seoul, KR",
-  portraitLabel: "PORTRAIT — STUDIO, 2026",
+  role: "Media Artist",
+  roleSub: "Exhibition & Media Director",
+  roleKo: "미디어아트 작가 · 전시/미디어 연출",
+  portraitLabel: "PORTRAIT — 2026",
 };
 
 /**
@@ -35,12 +34,11 @@ export const foreword = {
   label: "FOREWORD",
   title: "AFTERIMAGES",
   titleKo: "잔상",
-  lead: "빛과 움직임, 그리고 그 사이에 남는 감각에 대한 기록.",
-  leadEn: "A record of light, motion, and what remains between them.",
+  lead: "기술과 예술을 유기적으로 연결하는 미디어아트를 통해, 관객과 공간이 새로운 방식으로 소통하는 전시를 만들어가고자 합니다.",
+  leadEn: "Making exhibitions where audience and space speak to each other in a new way.",
   body: [
-    "저는 코드를 재료로 빛과 움직임, 소리를 다루는 인터랙티브 미디어 아티스트입니다. 관객의 몸짓과 목소리, 시선이 공간의 일부가 되는 순간을 만드는 데 관심이 있습니다.",
-    "센서와 실시간 데이터, 제너러티브 비주얼을 결합해 '보는 전시'가 아니라 '반응하는 공간'을 설계합니다. 완성된 이미지보다, 관객이 개입하는 순간 발생하는 잔상과 여운에 집중합니다.",
-    "최근에는 물리적 설치와 웹 기반 인터랙션의 경계를 허무는 작업을 이어가고 있습니다.",
+    "국립아시아문화전당, 광주미디어아트플랫폼, 한국문화예술위원회 등 문화예술기관을 중심으로 전시·공연·공공예술 프로젝트의 제작과 연출에 참여해 왔습니다.",
+    "AI와 실감미디어를 활용한 작품 제작부터 전시 운영, 기술 교육까지 다양한 현장을 경험하며 창작자이자 제작자로서의 역량을 확장하고 있습니다.",
   ],
 };
 
@@ -67,110 +65,142 @@ export const entrancePoster = {
     "하단에 SELECTED WORKS 2023–2026.",
 };
 
+/**
+ * 경력 · 학력.
+ *
+ * type은 각 항목에 붙는 라벨을 정합니다 —
+ *   work(활동) / exhibition(전시·상영) / teaching(강의) / program(수료) / edu(학력)
+ * 최신순으로 정렬해 두면 화면에도 그 순서로 걸립니다.
+ */
 export const timeline = [
   {
     year: "2026",
-    titleKo: "스튜디오 잔상(Studio Afterimage) 설립",
-    org: "대표 · 크리에이티브 디렉터",
-    descKo: "인터랙티브 설치와 웹 기반 미디어아트를 중심으로 하는 개인 스튜디오를 열었습니다.",
+    titleKo: "문화체육관광부 청년인턴 · 미디어 연출",
+    org: "국립아시아문화전당(ACC) 공연사업과 창제작센터",
+    descKo: "공연사업과 창제작센터에서 미디어 연출 분야 인턴으로 참여.",
     type: "work",
   },
   {
-    year: "2024",
-    titleKo: "국립 미디어랩 레지던시 참여",
-    org: "입주 작가",
-    descKo: "실시간 센서 데이터를 활용한 공간 설치 연구 및 전시 진행.",
-    type: "award",
+    year: "2026",
+    titleKo: "AI 활용 전남·광주작가 미디어아트 제작 시범 운영",
+    org: "국립아시아문화전당(ACC) · 연출 · 제작",
+    descKo: "AI를 활용한 미디어아트 제작에 연출·제작으로 참여. 2026.06—09 ACC 미디어월 상영.",
+    type: "exhibition",
   },
   {
-    year: "2023",
-    titleKo: "크리에이티브 스튜디오 근무",
-    org: "인터랙션 디자이너",
-    descKo: "브랜드 미디어아트 설치 및 웹 기반 인터랙티브 캠페인 다수 참여.",
-    type: "work",
-  },
-  {
-    year: "2021",
-    titleKo: "미디어아트과 졸업",
-    org: "학사",
-    descKo: "졸업 작품으로 신체 움직임 기반 제너러티브 비주얼 설치 발표.",
+    year: "2025",
+    titleKo: "멀티미디어학 전공",
+    org: "국가평생교육진흥원",
+    descKo: "",
     type: "edu",
   },
   {
-    year: "2020",
-    titleKo: "프리랜스 크리에이티브 코더로 활동 시작",
-    org: "Freelance",
-    descKo: "웹 기반 인터랙티브 프로젝트와 소규모 설치 작업을 병행.",
+    year: "2025",
+    titleKo: "디지털아트 컬처랩 쇼케이스 〈빛의 궤도〉 참여",
+    org: "광주미디어아트플랫폼(G.MAP) · 미디어아트 작가",
+    descKo: "미디어아트 작가로 쇼케이스에 참여.",
+    type: "exhibition",
+  },
+  {
+    year: "2025",
+    titleKo: "인큐베이팅랩 터치디자이너 입문 교육 강사",
+    org: "광주미디어아트플랫폼(G.MAP)",
+    descKo: "터치디자이너 입문 과정을 맡아 진행.",
+    type: "teaching",
+  },
+  {
+    year: "2025",
+    titleKo: "ACC 전문인 콘텐츠 발굴 3단계 수료 · 일경험 인턴십 3개월 수료",
+    org: "국립아시아문화전당(ACC)",
+    descKo: "",
+    type: "program",
+  },
+  {
+    year: "2024",
+    titleKo: "아르코 문화예술전문가 코스 수료",
+    org: "한국문화예술위원회(ARKO) · 전시기획 12기 · 무대기술 15기",
+    descKo: "전시기획 분야와 무대기술 분야 과정을 각각 수료.",
+    type: "program",
+  },
+  {
+    year: "2023",
+    titleKo: "창작뮤지컬 인형극 무대영상 디자인 및 연출",
+    org: "예비예술인 지원사업",
+    descKo: "창작뮤지컬 인형극의 무대영상 디자인과 연출에 참여.",
     type: "work",
   },
+  {
+    year: "2023",
+    titleKo: "공연기획연출 전공",
+    org: "백석예술대학교",
+    descKo: "",
+    type: "edu",
+  },
 ];
+
+/** 도구 진열장 머리말. */
+export const stackIntro =
+  "전시와 공연 현장에서 실제로 다루는 도구와 영역입니다. 제작부터 연출, 운영과 교육까지 이어집니다.";
 
 export const stack = [
   {
-    category: "Creative Coding",
-    items: ["Three.js / WebGL", "TouchDesigner", "p5.js", "GLSL Shader"],
+    category: "Media Art / Realtime",
+    items: ["TouchDesigner", "실감미디어 · 미디어월", "AI 활용 영상 제작"],
   },
   {
-    category: "Design & Motion",
-    items: ["Figma", "After Effects", "Cinema 4D", "Blender"],
+    category: "Stage & Exhibition",
+    items: ["무대영상 디자인", "전시 연출 · 운영", "공연 미디어 연출"],
   },
   {
-    category: "Interaction & Hardware",
-    items: ["Arduino", "Depth / Motion Sensor", "Max/MSP", "OSC / WebSocket"],
-  },
-  {
-    category: "Development",
-    items: ["React", "Node.js", "WebGL / GLSL", "Python"],
+    category: "Teaching",
+    items: ["TouchDesigner 입문 교육"],
   },
 ];
 
+/**
+ * 작품(전시실).
+ *
+ * 항목을 더하거나 빼면 전시실 개수와 우측 진행 표시가 자동으로 따라갑니다.
+ * accent는 그 작품 방의 포인트 컬러입니다.
+ *
+ * ※ descKo(설명)는 제출하신 경력 문서를 바탕으로 쓴 초안입니다.
+ *   실제 작업 내용에 맞게 다듬어 주세요.
+ */
 export const projects = [
   {
     num: "01",
-    title: "ECHO CHAMBER",
-    titleKo: "에코 챔버",
-    year: "2025",
-    medium: "인터랙티브 사운드-라이트 설치",
-    role: "크리에이티브 디렉터 · 개발",
-    tools: ["TouchDesigner", "Max/MSP", "Sensor Array"],
+    title: "AI MEDIA ART",
+    titleKo: "AI 활용 전남·광주작가 미디어아트",
+    year: "2026",
+    medium: "미디어월 상영 · 실감미디어",
+    role: "연출 · 제작",
+    tools: ["AI 영상 제작", "미디어월", "실감미디어"],
     descKo:
-      "관객의 목소리와 발소리가 공간을 채우는 빛의 파동으로 변환되는 사운드-라이트 설치. 소리가 사라진 자리에 남는 빛의 잔상을 다룹니다.",
-    accent: "#2FA890",
+      "국립아시아문화전당의 시범 운영 사업으로, AI를 활용해 전남·광주 지역 작가의 미디어아트를 제작했습니다. 2026년 6월부터 9월까지 ACC 미디어월에서 상영되었습니다.",
+    accent: "#2E8BE0",
   },
   {
     num: "02",
-    title: "LIMINAL LIGHT",
-    titleKo: "리미널 라이트",
-    year: "2024",
-    medium: "제너러티브 라이트 설치 · WebGL",
-    role: "크리에이티브 코더",
-    tools: ["Three.js", "GLSL", "WebGL"],
+    title: "ORBIT OF LIGHT",
+    titleKo: "빛의 궤도",
+    year: "2025",
+    medium: "디지털아트 쇼케이스",
+    role: "미디어아트 작가",
+    tools: ["TouchDesigner", "실감미디어"],
     descKo:
-      "실시간으로 변형되는 빛의 문턱을 통과하는 경험. 관객의 이동 속도에 따라 공간의 명도와 색온도가 반응합니다.",
+      "광주미디어아트플랫폼(G.MAP) 디지털아트 컬처랩 쇼케이스에 미디어아트 작가로 참여한 작업입니다.",
     accent: "#8A6CF2",
   },
   {
     num: "03",
-    title: "WAVEFRONT",
-    titleKo: "웨이브프론트",
+    title: "PUPPET STAGE",
+    titleKo: "창작뮤지컬 인형극 무대영상",
     year: "2023",
-    medium: "데이터 기반 키네틱 비주얼",
-    role: "테크니컬 아티스트",
-    tools: ["p5.js", "WebSocket", "Python"],
+    medium: "공연 무대영상",
+    role: "무대영상 디자인 · 연출",
+    tools: ["무대영상", "프로젝션"],
     descKo:
-      "실시간 조류·기상 데이터를 입력받아 움직이는 키네틱 비주얼로 변환하는 프로젝트. 자연의 리듬을 화면 위의 파동으로 옮깁니다.",
-    accent: "#2E8BE0",
-  },
-  {
-    num: "04",
-    title: "AFTERGLOW",
-    titleKo: "애프터글로우",
-    year: "2022",
-    medium: "AR 인터랙티브 경험",
-    role: "인터랙션 디자이너 · 개발",
-    tools: ["WebXR", "React", "Three.js"],
-    descKo:
-      "물리적 공간에 빛의 궤적을 남기는 AR 작업. 관객이 지나간 자리마다 잔광이 머물다 서서히 사라집니다.",
+      "예비예술인 지원사업으로 제작된 창작뮤지컬 인형극의 무대영상을 디자인하고 연출했습니다.",
     accent: "#E0A22E",
   },
 ];
